@@ -7,24 +7,55 @@
 */
 
 // Task: Add code here
+class BaseSignal{
+     // private variables
+     #type;
+    
+     // constructor
+     constructor(type){
+         if(this.constructor.name === "BaseSignal"){
+             throw new Error("This class cannot be instantiated");
+         }
+         this.#type = type;
+     }
+ 
+     // function
+     send(){        
+        if(this.#type=="TvSignal"){
+            console.log("Sending tv signal");
+        }else if(this.#type=="AirconSignal"){
+            console.log("Sending aircon signal");
+        }else if(this.#type=="DoorSignal"){
+            console.log("Sending door signal");
+        } else {
+            console.log("Others");
+        }
+     }
+}
 
 class TvSignal extends BaseSignal {
     constructor(){
         // Add code here
+        super("TvSignal")
     }
 }
 
 class AirconSignal extends BaseSignal {
     constructor(){
         // Add code here
+        super("AirconSignal");
     }
 }
 
 class DoorSignal extends BaseSignal {
     constructor(){
         // Add code here
+        super("DoorSignal");
     }
 }
+
+//To test the Base Class instantiation
+//const bas = new BaseSignal();
 
 const tv = new TvSignal();
 tv.send(); // prints "Sending tv signal"
